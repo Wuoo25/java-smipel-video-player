@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间，对应唯一的Mapper-->
+<mapper namespace="org.example.Mapper.VideoMapper">
+    <!-- 配置查询所有操作 ，返回类型是Video，如果查询出多条，会自动将多条放入一个list
+    一条用以下也可以-->
+    <!--可以定义别名-->
+    <select id="findAllByName" resultType="video" parameterType="string">
+        select * from videolist WHERE video_name=#{video_name};
+    </select>
+
+    <select id="findVideoNameByOrder" resultType="string" parameterType="Integer">
+        select Video_name from videolist WHERE Video_order =#{video_order};
+    </select>
+
+    <select id="findVideoIdByName" resultType="Integer" parameterType="string">
+        select Video_id from videolist WHERE Video_name=#{VideoName};
+    </select>
+
+    <select id="findAll" resultType="video">
+        select * from videolist;
+    </select>
+
+    <select id="findAllCount" resultType="Integer">
+        select COUNT(*) from videolist;
+    </select>
+
+    <insert id="InsertVideo" parameterType="video">
+        insert into videolist (Video_order,Video_name) values
+            (#{Video_order},#{Video_name});
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <!--给某个包（及子包）下的所有普通类自动起别名：（不会给匿名类、内部类、接口起别名）-->
+        <package name="org.example.AllClass"/>
+    </typeAliases>
+
+    <!-- 配置 mybatis 的环境 -->
+    <environments default="mysql">
+        <!-- 配置 mysql 的环境 -->
+        <environment id="mysql">
+            <!-- 配置事务的类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置连接数据库的信息：用的是数据源(连接池) -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/vedioplsyer?serverTimezone=UTC&amp;characterEncoding=utf8&amp;useUnicode=true&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+
+<!--    在配置文件中找到所有的mapper配置文件-->
+    <mappers>
+        <mapper resource="org/example/Mapper/VideoMapper.xml"></mapper>
+        <mapper resource="org/example/Mapper/MarkMapper.xml"></mapper>
+    </mappers>
+
+</configuration>

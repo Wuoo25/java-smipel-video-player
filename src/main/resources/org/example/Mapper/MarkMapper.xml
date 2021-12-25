@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间，对应唯一的Mapper-->
+<mapper namespace="org.example.Mapper.MarkMapper">
+
+   <insert id="InsertMark" parameterType="mark">
+        insert into marklist (Mark_text,MyVideoId,Mark_time) values
+            (#{Mark_text},#{MyVideoId},#{Mark_time});
+    </insert>
+
+    <select id="getAllByVideoId" resultType="mark">
+        select * from marklist WHERE MyVideoId=#{MyVideoId};
+    </select>
+
+</mapper>
